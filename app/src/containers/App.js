@@ -1,16 +1,22 @@
 require('../style/style.less');
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { bindActionCreators } from 'redux';
+import { Provider, connect } from 'react-redux';
 import classNames from 'classnames';
 
+import DevTools from './DevTools';
 import fablicCanvas from '../js/fabricCanvas';
 import Toolbar from '../components/Toolbar';
 import Canvas from '../components/Canvas';
 import ObjectDetailSidebar from '../components/ObjectDetailSidebar';
 
+import * as ObjectHandlerActions from '../actions/ObjectHandler';
 
-export default class App extends React.Component {
+const mapStateToProps = state => ({ activeObject: state.activeObject });
+const mapDispatchToProps = dispatch => ({ actions: bindActionCreators(ObjectHandlerActions, dispatch) });
+
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +29,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    fablicCanvas.on('object:selected', this.handleObjectEvent);
+    fablicCanvas.on('object:selected', this.props.actions.selectObject);
     fablicCanvas.on('object:moving', this.handleObjectEvent);
     fablicCanvas.on('object:modified', this.handleObjectEvent);
   }
@@ -59,36 +65,40 @@ export default class App extends React.Component {
 
 
   render() {
-    const { width, height } = this.state.canvas;
+    const { store } = this.props;
 
     return (
-      <div>
-        <Toolbar />
-        <div className="container">
-          <div className="row">
-            <div ref="canvasWrapper" className={classNames('ten', 'columns')}>
-              <Canvas
-                width={width}
-                height={height}
-              />
-            </div>
-            <div className={classNames('two', 'columns')} >
-              <ObjectDetailSidebar
-                activeObject={this.state.activeObject}
-                onChangePositionLeft={this.handleChangePositionLeft}
-                onChangePositionTop={this.handleChangePositionTop}
-                onChangeSizeWidth={this.handleChangeSizeWidth}
-                onChangeSizeHeight={this.handleChangeSizeHeight}
-              />
+      <Provider store={store} >
+        <div>
+          <Toolbar />
+          <div className="container">
+            <div className="row">
+              <div ref="canvasWrapper" className={classNames('ten', 'columns')}>
+                <Canvas
+                  width={500}
+                  height={500}
+                />
+              </div>
+              <div className={classNames('two', 'columns')} >
+                <ObjectDetailSidebar
+                  activeObject={this.state.activeObject}
+                  onChangePositionLeft={this.handleChangePositionLeft}
+                  onChangePositionTop={this.handleChangePositionTop}
+                  onChangeSizeWidth={this.handleChangeSizeWidth}
+                  onChangeSizeHeight={this.handleChangeSizeHeight}
+                />
+              </div>
             </div>
           </div>
+          <DevTools />
         </div>
-      </div>
+      </Provider>
     );
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
+App.propTypes = {
+  store: React.PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

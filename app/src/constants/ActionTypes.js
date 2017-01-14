@@ -1,0 +1,1 @@
+export const OBJECT_SELECTED = 'OBJECT_SELECTED';
