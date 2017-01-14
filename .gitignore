@@ -1,4 +1,4 @@
-app/build
+build
 
 
 ### https://raw.github.com/github/gitignore/300b0540c395e8bad91f8f509830aed9d43c9bf9/Global/JetBrains.gitignore
@@ -37,7 +37,8 @@ fabric.properties
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
