@@ -1,4 +1,4 @@
-require('../style/style.less');
+require('../../style/style.less');
 
 import React from 'react';
 import { bindActionCreators } from 'redux';
@@ -6,12 +6,12 @@ import { Provider, connect } from 'react-redux';
 import classNames from 'classnames';
 
 import DevTools from './DevTools';
-import fablicCanvas from '../js/fabricCanvas';
-import Toolbar from '../components/Toolbar';
-import Canvas from '../components/Canvas';
-import ObjectDetailSidebar from '../components/ObjectDetailSidebar';
+import fablicCanvas from '../../js/fabricCanvas';
+import Toolbar from '../../components/Toolbar';
+import Canvas from '../../components/Canvas';
+import ObjectDetailSidebar from '../../components/ObjectDetailSidebar';
 
-import * as ObjectHandlerActions from '../actions/ObjectHandler';
+import * as ObjectHandlerActions from '../../actions/ObjectHandler';
 
 const mapStateToProps = state => ({ activeObject: state.activeObject });
 const mapDispatchToProps = dispatch => ({ actions: bindActionCreators(ObjectHandlerActions, dispatch) });
