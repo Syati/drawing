@@ -6,7 +6,6 @@ const appRoot = path.resolve(__dirname, '../app');
 const buildRoot = path.resolve(appRoot, '../build');
 
 module.exports = {
-  devtool: 'inline-source-map',
   context: appRoot,
   entry: [
     'webpack/hot/only-dev-server',
