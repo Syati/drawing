@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import * as types from '../constants/ActionTypes';
+import * as types from '../constants/actionTypes';
 
 
 const initialState = {
@@ -7,10 +7,5 @@ const initialState = {
 };
 
 export default handleActions({
-  [types.OBJECT_SELECTED]: (state, action) => {
-    return {
-      ...state,
-      activeObject: action.payload,
-    };
-  },
- }, initialState);
+  [types.OBJECT_SELECTED]: (state, action) => action.payload,
+}, initialState);

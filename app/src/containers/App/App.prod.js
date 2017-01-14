@@ -10,10 +10,10 @@ import Toolbar from '../../components/Toolbar';
 import Canvas from '../../components/Canvas';
 import ObjectDetailSidebar from '../../components/ObjectDetailSidebar';
 
-import * as ObjectHandlerActions from '../../actions/ObjectHandler';
+import * as objectHandlerActions from '../../actions/objectHandlers';
 
 const mapStateToProps = state => ({ activeObject: state.activeObject });
-const mapDispatchToProps = dispatch => ({ actions: bindActionCreators(ObjectHandlerActions, dispatch) });
+const mapDispatchToProps = dispatch => ({ actions: bindActionCreators(objectHandlerActions, dispatch) });
 
 class App extends React.Component {
   constructor(props) {
