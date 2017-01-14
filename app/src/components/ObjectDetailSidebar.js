@@ -1,6 +1,6 @@
 import React from 'react';
 
-import fabricCanvas from './fabricCanvas';
+import fabricCanvas from '../js/fabricCanvas';
 
 // import { SketchPicker } from 'react-color';
 

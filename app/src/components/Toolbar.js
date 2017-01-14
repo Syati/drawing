@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { fabric } from 'fabric';
-import fabricCanvas from './fabricCanvas';
+import fabricCanvas from '../js/fabricCanvas';
 
 export default class Toolbar extends React.Component {
   handleSquareClick() {

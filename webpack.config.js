@@ -16,7 +16,7 @@ module.exports = {
   context: appRoot,
   entry: [
     'webpack/hot/only-dev-server',
-    './src/js/App.js',
+    './src/containers/App.js',
   ],
   output: {
     path: buildRoot,

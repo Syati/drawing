@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import fabricCanvas from './fabricCanvas';
+import fabricCanvas from '../js/fabricCanvas';
 
 export default class Canvas extends React.Component {
   componentDidMount() {

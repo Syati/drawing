@@ -4,10 +4,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
-import fablicCanvas from './fabricCanvas';
-import Toolbar from './Toolbar';
-import Canvas from './Canvas';
-import ObjectDetailSidebar from './ObjectDetailSidebar';
+import fablicCanvas from '../js/fabricCanvas';
+import Toolbar from '../components/Toolbar';
+import Canvas from '../components/Canvas';
+import ObjectDetailSidebar from '../components/ObjectDetailSidebar';
 
 
 export default class App extends React.Component {
