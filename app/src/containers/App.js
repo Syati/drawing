@@ -32,14 +32,10 @@ class App extends React.Component {
   componentDidMount() {
     const { actions } = this.props;
 
-    fablicCanvas.on('object:selected', actions.selectObject);
-    fablicCanvas.on('object:moving', this.handleObjectEvent);
-    fablicCanvas.on('object:modified', this.handleObjectEvent);
+    fablicCanvas.on('object:selected', actions.selected);
+    fablicCanvas.on('object:moving', actions.moving);
+    fablicCanvas.on('object:modified', actions.modified);
   }
-
-  handleObjectEvent = (evt) => {
-    this.setState({ activeObject: evt.target });
-  };
 
   refreshActiveObject = () => {
     this.setState({ activeObject: this.state.activeObject });
