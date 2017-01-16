@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import fablicCanvas from './fablicCanvas';
+import fabricCanvas from './fabricCanvas';
 import activeObject from './activeObject';
 
 const rootReducers = combineReducers({
-  fablicCanvas,
+  fabricCanvas,
   activeObject,
 });
 

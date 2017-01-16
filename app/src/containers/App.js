@@ -8,18 +8,18 @@ import Toolbar from './ToolbarContainer';
 import ObjectDetailSidebar from './ObjectDetailSidebarContainer';
 
 import * as objectHandlerActions from '../actions/objectHandler';
-import * as fablicCanvasActions from '../actions/fablicCanvas';
+import * as fabricCanvasActions from '../actions/fabricCanvas';
 
 class App extends React.Component {
   componentDidMount() {
-    const { fablicCanvas, objectHandlerActions } = this.props;
-    fablicCanvas.on('object:selected', objectHandlerActions.selected);
-    fablicCanvas.on('object:moving', objectHandlerActions.moving);
-    fablicCanvas.on('object:modified', objectHandlerActions.modified);
+    const { fabricCanvas, objectHandlerActions } = this.props;
+    fabricCanvas.on('object:selected', objectHandlerActions.selected);
+    fabricCanvas.on('object:moving', objectHandlerActions.moving);
+    fabricCanvas.on('object:modified', objectHandlerActions.modified);
   }
 
   render() {
-    const { fablicCanvasActions } = this.props;
+    const { fabricCanvasActions } = this.props;
 
     return (
       <div>
@@ -27,7 +27,7 @@ class App extends React.Component {
         <div className="container">
           <div className="row">
             <div ref="canvasWrapper" className={classNames('ten', 'columns')}>
-              <Canvas initialize={fablicCanvasActions.initialize} width={500} height={500} />
+              <Canvas initialize={fabricCanvasActions.initialize} width={500} height={500} />
             </div>
             <div className={classNames('two', 'columns')} >
               <ObjectDetailSidebar />
@@ -41,12 +41,12 @@ class App extends React.Component {
 
 
 const mapStateToProps = state => ({
-  fablicCanvas: state.fablicCanvas,
+  fabricCanvas: state.fabricCanvas,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   objectHandlerActions: bindActionCreators(objectHandlerActions, dispatch),
-  fablicCanvasActions: bindActionCreators(fablicCanvasActions, dispatch),
+  fabricCanvasActions: bindActionCreators(fabricCanvasActions, dispatch),
 });
 
 export default connect(

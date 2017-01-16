@@ -7,10 +7,10 @@ export const refresh = createAction(types.CANVAS_REFRESH);
 export const modified = event => ({ type: types.OBJECT_MODIFIED, payload: event.target });
 
 export const addObject = obj => (dispatch, getState) => {
-  const fablicCanvas = getState().fablicCanvas;
-  fablicCanvas.add(obj);
-  fablicCanvas.setActiveObject(obj);
-  dispatch({ type: types.ADD_OBJECT, payload: fablicCanvas });
+  const fabricCanvas = getState().fabricCanvas;
+  fabricCanvas.add(obj);
+  fabricCanvas.setActiveObject(obj);
+  dispatch({ type: types.ADD_OBJECT, payload: fabricCanvas });
 };
 
 export const setTop = value => (dispatch, getState) => {

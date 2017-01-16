@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import ObjectDetailSidebar from '../components/ObjectDetailSidebar';
-import * as objectActions from '../actions/fablicObject';
+import * as objectActions from '../actions/fabricObject';
 
 const ObjectDetailSidebarContainer = ({ activeObject, objectActions }) => (
   <ObjectDetailSidebar
