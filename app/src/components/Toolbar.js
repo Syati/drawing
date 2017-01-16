@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { fabric } from 'fabric';
 
 export default class Toolbar extends React.Component {
@@ -26,7 +25,7 @@ export default class Toolbar extends React.Component {
     const reader = new FileReader();
     const file = e.target.files[0];
     reader.onload = (event) => {
-      let image = event.target.result;
+      const image = event.target.result;
       fabric.Image.fromURL(image, (img) => {
         this.props.onAddObject(img);
       });
@@ -53,4 +52,3 @@ export default class Toolbar extends React.Component {
     );
   }
 }
-
