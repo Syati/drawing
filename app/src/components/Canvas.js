@@ -1,17 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import fabricCanvas from '../js/fabricCanvas';
-
 export default class Canvas extends React.Component {
   componentDidMount() {
     const el = ReactDOM.findDOMNode(this);
-    fabricCanvas.initialize(el, {
+    this.props.initialize({
+      element: el,
       height: this.props.height,
       width: this.props.width,
     });
   }
-
 
   render() {
     return (
@@ -22,6 +20,7 @@ export default class Canvas extends React.Component {
 
 
 Canvas.propTypes = {
+  initialize: React.PropTypes.func,
   width: React.PropTypes.number,
   height: React.PropTypes.number,
 };

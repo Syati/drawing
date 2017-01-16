@@ -21,10 +21,12 @@ export default class ObjectDetailSidebar extends React.Component {
   };
 
   render() {
-    let positionTop = this.props.activeObject ? this.props.activeObject.getLeft() : 0;
-    let positionLeft = this.props.activeObject ? this.props.activeObject.getTop() : 0;
-    let sizeWidth = this.props.activeObject ? this.props.activeObject.getScaleX() : 0;
-    let sizeHeight = this.props.activeObject ? this.props.activeObject.getScaleY() : 0;
+    const isActiveObject = !!this.props.activeObject;
+
+    let positionTop = isActiveObject ? this.props.activeObject.getLeft() : 0;
+    let positionLeft = isActiveObject ? this.props.activeObject.getTop() : 0;
+    let sizeWidth = isActiveObject ? this.props.activeObject.getScaleX() : 0;
+    let sizeHeight = isActiveObject ? this.props.activeObject.getScaleY() : 0;
 
     return (
       <div id="ObjectDetailSideBar">

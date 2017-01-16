@@ -3,86 +3,34 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-import Toolbar from '../components/Toolbar';
 import Canvas from '../components/Canvas';
-import ObjectDetailSidebar from '../components/ObjectDetailSidebar';
-import fablicCanvas from '../js/fabricCanvas';
+import Toolbar from './ToolbarContainer';
+import ObjectDetailSidebar from './ObjectDetailSidebarContainer';
 
-import * as objectHandlerActions from '../actions/objectHandlers';
-
-const mapStateToProps = state => ({
-  activeObject: state.activeObject,
-});
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(objectHandlerActions, dispatch),
-});
+import * as objectHandlerActions from '../actions/objectHandler';
+import * as fablicCanvasActions from '../actions/fablicCanvas';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      canvas: {
-        width: 500,
-        height: 500,
-      },
-      activeObject: null,
-    };
-  }
-
   componentDidMount() {
-    const { actions } = this.props;
-
-    fablicCanvas.on('object:selected', actions.selected);
-    fablicCanvas.on('object:moving', actions.moving);
-    fablicCanvas.on('object:modified', actions.modified);
+    const { fablicCanvas, objectHandlerActions } = this.props;
+    fablicCanvas.on('object:selected', objectHandlerActions.selected);
+    fablicCanvas.on('object:moving', objectHandlerActions.moving);
+    fablicCanvas.on('object:modified', objectHandlerActions.modified);
   }
-
-  refreshActiveObject = () => {
-    this.setState({ activeObject: this.state.activeObject });
-    fablicCanvas.renderAll();
-  };
-
-  handleChangePositionLeft = (value) => {
-    this.state.activeObject.setLeft(parseInt(value, 10)).setCoords();
-    this.refreshActiveObject();
-  };
-
-  handleChangePositionTop = (value) => {
-    this.state.activeObject.setTop(parseInt(value, 10)).setCoords();
-    this.refreshActiveObject();
-  };
-
-  handleChangeSizeWidth = (value) => {
-    this.state.activeObject.setScaleX(parseFloat(value)).setCoords();
-    this.refreshActiveObject();
-  };
-
-  handleChangeSizeHeight = (value) => {
-    this.state.activeObject.setScaleY(parseFloat(value)).setCoords();
-    this.refreshActiveObject();
-  };
-
 
   render() {
+    const { fablicCanvasActions } = this.props;
+
     return (
       <div>
         <Toolbar />
         <div className="container">
           <div className="row">
             <div ref="canvasWrapper" className={classNames('ten', 'columns')}>
-              <Canvas
-                width={500}
-                height={500}
-              />
+              <Canvas initialize={fablicCanvasActions.initialize} width={500} height={500} />
             </div>
             <div className={classNames('two', 'columns')} >
-              <ObjectDetailSidebar
-                activeObject={this.state.activeObject}
-                onChangePositionLeft={this.handleChangePositionLeft}
-                onChangePositionTop={this.handleChangePositionTop}
-                onChangeSizeWidth={this.handleChangeSizeWidth}
-                onChangeSizeHeight={this.handleChangeSizeHeight}
-              />
+              <ObjectDetailSidebar />
             </div>
           </div>
         </div>
@@ -91,4 +39,17 @@ class App extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+const mapStateToProps = state => ({
+  fablicCanvas: state.fablicCanvas,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  objectHandlerActions: bindActionCreators(objectHandlerActions, dispatch),
+  fablicCanvasActions: bindActionCreators(fablicCanvasActions, dispatch),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

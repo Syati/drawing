@@ -1,10 +1,9 @@
 import React from 'react';
 
 import { fabric } from 'fabric';
-import fabricCanvas from '../js/fabricCanvas';
 
 export default class Toolbar extends React.Component {
-  handleSquareClick() {
+  handleSquareClick = () => {
     const rect = new fabric.Rect({
       top: 10,
       left: 10,
@@ -12,17 +11,16 @@ export default class Toolbar extends React.Component {
       height: 10,
       fill: 'red',
     });
-    fabricCanvas.add(rect);
-  }
+    this.props.onAddObject(rect);
+  };
 
-  handleTextClick() {
+  handleTextClick = () => {
     const iText = new fabric.IText('');
-    fabricCanvas.add(iText);
-    fabricCanvas.setActiveObject(iText);
+    this.props.onAddObject(iText);
     iText.enterEditing();
-  }
+  };
 
-  handleImageFileChange(e) {
+  handleImageFileChange = (e) => {
     e.preventDefault();
 
     const reader = new FileReader();
@@ -30,12 +28,12 @@ export default class Toolbar extends React.Component {
     reader.onload = (event) => {
       let image = event.target.result;
       fabric.Image.fromURL(image, (img) => {
-        fabricCanvas.add(img).renderAll();
+        this.props.onAddObject(img);
       });
     };
 
     reader.readAsDataURL(file);
-  }
+  };
 
   render() {
     return (
