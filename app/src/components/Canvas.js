@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom';
 export default class Canvas extends React.Component {
   componentDidMount() {
     const el = ReactDOM.findDOMNode(this);
-    this.props.initialize({
-      element: el,
-      height: this.props.height,
-      width: this.props.width,
-    });
+    this.props.initialize(
+      el,
+      this.props.height,
+      this.props.width,
+    );
   }
 
   render() {
