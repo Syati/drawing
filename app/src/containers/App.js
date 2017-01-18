@@ -13,9 +13,9 @@ import * as fabricCanvasActions from '../actions/fabricCanvas';
 class App extends React.Component {
   componentDidMount() {
     const { fabricCanvas, objectHandlerActions } = this.props;
-    fabricCanvas.on('object:selected', objectHandlerActions.selected);
-    fabricCanvas.on('object:moving', objectHandlerActions.moving);
-    fabricCanvas.on('object:modified', objectHandlerActions.modified);
+    fabricCanvas.on('object:selected', (evt) => objectHandlerActions.selected(evt.target));
+    fabricCanvas.on('object:moving', (evt) => objectHandlerActions.moving(evt.target));
+    fabricCanvas.on('object:modified', (evt) => objectHandlerActions.modified(evt.target));
   }
 
   render() {

@@ -10,12 +10,9 @@ export const addObject = obj => (dispatch, getState) => {
   const fabricCanvas = getState().fabricCanvas;
   fabricCanvas.add(obj);
   fabricCanvas.setActiveObject(obj);
-  dispatch({ type: types.ADD_OBJECT, payload: fabricCanvas });
-};
 
-export const setTop = value => (dispatch, getState) => {
-  dispatch({ type: types.OBJECT_SET_TOP, payload: value });
-  dispatch({ type: types.CANVAS_REFRESH });
+  dispatch({ type: types.ADD_OBJECT, payload: fabricCanvas });
+  dispatch({ type: types.OBJECT_SELECTED, payload: obj });
 };
 
 

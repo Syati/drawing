@@ -15,7 +15,9 @@ const ObjectDetailSidebarContainer = ({ activeObject, objectActions }) => (
   />
 );
 
-const mapStateToProps = (state) => (state.activeObject);
+const mapStateToProps = (state) => ({
+  activeObject: state.activeObject,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   objectActions: bindActionCreators(objectActions, dispatch),

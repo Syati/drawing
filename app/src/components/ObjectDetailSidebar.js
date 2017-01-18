@@ -19,12 +19,13 @@ export default class ObjectDetailSidebar extends React.Component {
   };
 
   render() {
-    const isActiveObject = !!this.props.activeObject;
+    const { activeObject } = this.props;
+    const isActiveObject = !!activeObject;
 
-    let positionTop = isActiveObject ? this.props.activeObject.getLeft() : 0;
-    let positionLeft = isActiveObject ? this.props.activeObject.getTop() : 0;
-    let sizeWidth = isActiveObject ? this.props.activeObject.getScaleX() : 0;
-    let sizeHeight = isActiveObject ? this.props.activeObject.getScaleY() : 0;
+    let positionLeft = isActiveObject ? activeObject.left : 0;
+    let positionTop = isActiveObject ? activeObject.top : 0;
+    let sizeWidth = isActiveObject ? activeObject.width : 0;
+    let sizeHeight = isActiveObject ? activeObject.height : 0;
 
     return (
       <div id="ObjectDetailSideBar">
@@ -33,7 +34,7 @@ export default class ObjectDetailSidebar extends React.Component {
             <input
               id="position_x"
               type="number"
-              value={positionTop}
+              value={positionLeft}
               onChange={this.handleChangePositionLeft}
             />
           </label>
@@ -41,7 +42,7 @@ export default class ObjectDetailSidebar extends React.Component {
             <input
               id="position_y"
               type="number"
-              value={positionLeft}
+              value={positionTop}
               onChange={this.handleChangePositionTop}
             />
           </label>
