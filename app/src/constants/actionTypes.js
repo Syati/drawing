@@ -6,6 +6,7 @@ export const ADD_OBJECT = 'ADD_OBJECT';
 export const OBJECT_SELECTED = 'OBJECT_SELECTED';
 export const OBJECT_MOVING = 'OBJECT_MOVING';
 export const OBJECT_MODIFIED = 'OBJECT_MODIFIED';
+export const OBJECT_SCALING = 'OBJECT_SCALING';
 
 export const OBJECT_SET_LEFT = 'OBJECT_SET_LEFT';
 export const OBJECT_SET_TOP = 'OBJECT_SET_TOP';
