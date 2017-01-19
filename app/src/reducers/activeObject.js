@@ -6,6 +6,7 @@ export default handleActions({
   [types.OBJECT_MOVING]: (state, action) => ({ ...state, ...action.payload }),
   [types.OBJECT_MODIFIED]: (state, action) => ({ ...state, ...action.payload }),
   [types.OBJECT_SCALING]: (state, action) => ({ ...state, ...action.payload }),
+  [types.OBJECT_CLEARED]: (state, action) => null,
 
   [types.OBJECT_SET_LEFT]: (state, action) => ({ ...state, ...action.payload }),
   [types.OBJECT_SET_TOP]: (state, action) => ({ ...state, ...action.payload }),

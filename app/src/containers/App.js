@@ -17,6 +17,7 @@ class App extends React.Component {
     fabricCanvas.on('object:moving', (evt) => objectHandlerActions.moving(evt.target));
     fabricCanvas.on('object:modified', (evt) => objectHandlerActions.modified(evt.target));
     fabricCanvas.on('object:scaling', (evt) => objectHandlerActions.scaling(evt.target));
+    fabricCanvas.on('selection:cleared', (evt) => objectHandlerActions.cleared());
   }
 
   render() {
