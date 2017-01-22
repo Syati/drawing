@@ -2,6 +2,10 @@ import React from 'react';
 import { fabric } from 'fabric';
 
 export default class Toolbar extends React.Component {
+  handleExportClick = (e) => {
+    this.props.onToDataURL();
+  };
+
   handleSquareClick = () => {
     const rect = new fabric.Rect({
       top: 10,
@@ -35,8 +39,10 @@ export default class Toolbar extends React.Component {
   };
 
   render() {
+    const { url } = this.props;
     return (
       <div id="toolBar">
+        <a className="button" href={url}  download="image.jpg" onClick={this.handleExportClick}>Export</a>
         <button onClick={this.handleSquareClick}>Squ</button>
         <button onClick={this.handleTextClick}>Text</button>
         <label htmlFor="imageFile" className="button">

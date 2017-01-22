@@ -15,4 +15,12 @@ export const addObject = obj => (dispatch, getState) => {
   dispatch({ type: types.OBJECT_SELECTED, payload: obj });
 };
 
+export const toDataURL = event => (dispatch, getState) => {
+  const fabricCanvas = getState().fabricCanvas;
+  const dataURL = fabricCanvas.toDataURL({
+    format: 'jpeg',
+    quality: 0.8
+  });
+  dispatch({ type: types.TO_DATA_URL, payload: dataURL });
+};
 
