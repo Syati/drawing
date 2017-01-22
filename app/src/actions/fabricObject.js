@@ -28,3 +28,17 @@ export const setHeight = value => (dispatch, getState) => {
   dispatch({ type: types.OBJECT_SET_HEIGHT, payload: activeObject });
   dispatch({ type: types.CANVAS_REFRESH });
 };
+
+export const setFontFamily = value => (dispatch, getState) => {
+  const activeObject = getState().fabricCanvas.getActiveObject();
+  activeObject.setFontFamily(value);
+  dispatch({ type: types.OBJECT_SET_FONT_FAMILY, payload: activeObject });
+  dispatch({ type: types.CANVAS_REFRESH });
+};
+
+export const setFontSize = value => (dispatch, getState) => {
+  const activeObject = getState().fabricCanvas.getActiveObject();
+  activeObject.setFontSize(value);
+  dispatch({ type: types.OBJECT_SET_FONT_SIZE, payload: activeObject });
+  dispatch({ type: types.CANVAS_REFRESH });
+};

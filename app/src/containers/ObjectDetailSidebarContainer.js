@@ -12,6 +12,8 @@ const ObjectDetailSidebarContainer = ({ activeObject, objectActions }) => (
     onChangePositionTop={objectActions.setTop}
     onChangeSizeWidth={objectActions.setWidth}
     onChangeSizeHeight={objectActions.setHeight}
+    onChangeFontFamily={objectActions.setFontFamily}
+    onChangeFontSize={objectActions.setFontSize}
   />
 );
 

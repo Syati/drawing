@@ -21,4 +21,6 @@ export default handleActions({
   [types.OBJECT_SET_WIDTH]: (state, action) => ({ ...state, ...action.payload.toJSON() }),
   [types.OBJECT_SET_HEIGHT]: (state, action) => ({ ...state, ...action.payload.toJSON() }),
 
+  [types.OBJECT_SET_FONT_FAMILY]: (state, action) => ({ ...state, ...action.payload.toJSON() }),
+  [types.OBJECT_SET_FONT_SIZE]: (state, action) => ({ ...state, ...action.payload.toJSON() }),
 }, initialState);
