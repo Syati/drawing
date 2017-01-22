@@ -4,9 +4,7 @@ import { render } from 'react-dom';
 import Root from './containers/Root';
 import configureStore from './store';
 
-const store = configureStore({
-  activeObject: null,
-});
+const store = configureStore({});
 
 const rootElement = document.getElementById('app');
 

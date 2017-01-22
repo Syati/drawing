@@ -18,23 +18,21 @@ export default class ObjectDetailSidebar extends React.Component {
     this.props.onChangeSizeHeight(evt.target.value);
   };
 
-  render() {
-    const { activeObject } = this.props;
-    const isActiveObject = !!activeObject;
 
-    let positionLeft = isActiveObject ? activeObject.left : 0;
-    let positionTop = isActiveObject ? activeObject.top : 0;
-    let sizeWidth = isActiveObject ? activeObject.width : 0;
-    let sizeHeight = isActiveObject ? activeObject.height : 0;
 
     return (
       <div id="ObjectDetailSideBar">
+
+  renderCommonParts() {
+    const { left, top, width, height } = this.props.activeObject;
+    return (
+      <div>
         <div>Position
           <label>X
             <input
               id="position_x"
               type="number"
-              value={positionLeft}
+              value={left}
               onChange={this.handleChangePositionLeft}
             />
           </label>
@@ -42,7 +40,7 @@ export default class ObjectDetailSidebar extends React.Component {
             <input
               id="position_y"
               type="number"
-              value={positionTop}
+              value={top}
               onChange={this.handleChangePositionTop}
             />
           </label>
@@ -52,7 +50,7 @@ export default class ObjectDetailSidebar extends React.Component {
             <input
               id="scale"
               type="number"
-              value={sizeWidth}
+              value={width}
               onChange={this.handleChangeSizeWidth}
             />
           </label>
@@ -60,11 +58,20 @@ export default class ObjectDetailSidebar extends React.Component {
             <input
               id="scale"
               type="number"
-              value={sizeHeight}
+              value={height}
               onChange={this.handleChangeSizeHeight}
             />
           </label>
         </div>
+      </div>
+    );
+  }
+
+  render() {
+    let sidebar = this.renderCommonParts();
+    return (
+      <div id="ObjectDetailSideBar">
+        {sidebar}
       </div>
     );
   }
