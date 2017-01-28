@@ -9,10 +9,12 @@ import ObjectDetailSidebar from './ObjectDetailSidebarContainer';
 
 import * as objectHandlerActions from '../actions/objectHandler';
 import * as fabricCanvasActions from '../actions/fabricCanvas';
+import * as fontsActions from '../actions/fonts';
 
 class App extends React.Component {
   componentDidMount() {
-    const { fabricCanvas, objectHandlerActions } = this.props;
+    const { fabricCanvas, objectHandlerActions, fontsActions } = this.props;
+    fontsActions.initialize();
     fabricCanvas.on('object:selected', (evt) => objectHandlerActions.selected(evt.target));
     fabricCanvas.on('object:moving', (evt) => objectHandlerActions.moving(evt.target));
     fabricCanvas.on('object:modified', (evt) => objectHandlerActions.modified(evt.target));
@@ -49,6 +51,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch) => ({
   objectHandlerActions: bindActionCreators(objectHandlerActions, dispatch),
   fabricCanvasActions: bindActionCreators(fabricCanvasActions, dispatch),
+  fontsActions: bindActionCreators(fontsActions, dispatch),
 });
 
 export default connect(
