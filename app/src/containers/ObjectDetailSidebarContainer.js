@@ -5,9 +5,10 @@ import { bindActionCreators } from 'redux';
 import ObjectDetailSidebar from '../components/ObjectDetailSidebar';
 import * as objectActions from '../actions/fabricObject';
 
-const ObjectDetailSidebarContainer = ({ activeObject, objectActions }) => (
+const ObjectDetailSidebarContainer = ({ activeFonts, activeObject, objectActions }) => (
   <ObjectDetailSidebar
     activeObject={activeObject}
+    activeFonts={activeFonts}
     onChangePositionLeft={objectActions.setLeft}
     onChangePositionTop={objectActions.setTop}
     onChangeSizeWidth={objectActions.setWidth}
@@ -19,6 +20,7 @@ const ObjectDetailSidebarContainer = ({ activeObject, objectActions }) => (
 
 const mapStateToProps = (state) => ({
   activeObject: state.activeObject,
+  activeFonts: state.fonts.active,
 });
 
 const mapDispatchToProps = (dispatch) => ({
