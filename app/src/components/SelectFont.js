@@ -11,18 +11,18 @@ export default class SelectFont extends React.Component {
     this.props.onChangeFontSize(evt.target.value);
   };
 
-  createOptions = (fonts) => {
-    return fonts.map((font, i) => (
+  createOptions = (fonts) => (
+    fonts.map((font, i) => (
       <optgroup key={i} className={webFontFamilies[font].className}>
         <option value={`'${font}'`}>
           {webFontFamilies[font].name}
         </option>
       </optgroup>
-    ));
-  };
+    ))
+  );
 
   render() {
-    const fonts =  this.props.activeFonts;
+    const fonts = this.props.activeFonts;
     const { fontFamily, fontSize } = this.props.activeObject;
 
     return (

@@ -5,7 +5,7 @@ import { fabric } from 'fabric';
 const initialState = new fabric.Canvas();
 
 export default handleActions({
-  [types.CANVAS_INITIALIZE]: (state, action) => state,
-  [types.CANVAS_REFRESH]: (state, action) => state.renderAll(),
-  [types.ADD_OBJECT]: (state, action) => state,
+  [types.CANVAS_INITIALIZE]: (state) => state,
+  [types.CANVAS_REFRESH]: (state) => state.renderAll(),
+  [types.ADD_OBJECT]: (state) => state,
 }, initialState);

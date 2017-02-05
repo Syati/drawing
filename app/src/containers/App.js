@@ -13,13 +13,13 @@ import * as fontsActions from '../actions/fonts';
 
 class App extends React.Component {
   componentDidMount() {
-    const { fabricCanvas, objectHandlerActions, fontsActions } = this.props;
+    const { fabricCanvas, objectHandlers, fontsActions } = this.props;
     fontsActions.initialize();
-    fabricCanvas.on('object:selected', (evt) => objectHandlerActions.selected(evt.target));
-    fabricCanvas.on('object:moving', (evt) => objectHandlerActions.moving(evt.target));
-    fabricCanvas.on('object:modified', (evt) => objectHandlerActions.modified(evt.target));
-    fabricCanvas.on('object:scaling', (evt) => objectHandlerActions.scaling(evt.target));
-    fabricCanvas.on('selection:cleared', (evt) => objectHandlerActions.cleared());
+    fabricCanvas.on('object:selected', (evt) => objectHandlers.selected(evt.target));
+    fabricCanvas.on('object:moving', (evt) => objectHandlers.moving(evt.target));
+    fabricCanvas.on('object:modified', (evt) => objectHandlers.modified(evt.target));
+    fabricCanvas.on('object:scaling', (evt) => objectHandlers.scaling(evt.target));
+    fabricCanvas.on('selection:cleared', () => objectHandlers.cleared());
   }
 
   render() {
@@ -43,13 +43,18 @@ class App extends React.Component {
   }
 }
 
+App.propTypes = {
+  fabricCanvas: React.PropTypes.any,
+  objectHandlers: React.PropTypes.any,
+  fontsActions: React.PropTypes.any,
+};
 
 const mapStateToProps = state => ({
   fabricCanvas: state.fabricCanvas,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  objectHandlerActions: bindActionCreators(objectHandlerActions, dispatch),
+  objectHandlers: bindActionCreators(objectHandlerActions, dispatch),
   fabricCanvasActions: bindActionCreators(fabricCanvasActions, dispatch),
   fontsActions: bindActionCreators(fontsActions, dispatch),
 });

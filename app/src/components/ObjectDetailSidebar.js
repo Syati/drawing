@@ -88,7 +88,7 @@ export default class ObjectDetailSidebar extends React.Component {
   render() {
     const { type } = this.props.activeObject;
     let sidebar = this.renderCommonParts();
-    if (type === "i-text") {
+    if (type === 'i-text') {
       sidebar = this.renderText();
     }
     return (
@@ -105,6 +105,7 @@ ObjectDetailSidebar.propTypes = {
   onChangeSizeWidth: React.PropTypes.func,
   onChangeSizeHeight: React.PropTypes.func,
   onChangeFontFamily: React.PropTypes.func,
+  onChangeFontSize: React.PropTypes.func,
   activeObject: React.PropTypes.object,
   activeFonts: React.PropTypes.array,
 };

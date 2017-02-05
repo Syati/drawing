@@ -23,6 +23,7 @@ export const googleCustomFonts = {
     'https://fonts.googleapis.com/earlyaccess/nicomoji.css',
     'https://fonts.googleapis.com/earlyaccess/notosansjapanese.css',
   ],
-}
+};
+
 
 

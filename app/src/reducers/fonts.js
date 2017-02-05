@@ -6,7 +6,7 @@ const initialState = {
 };
 
 export default handleActions({
-  [types.FONTS_INITIALIZE]: (state, action) => state,
+  [types.FONTS_INITIALIZE]: (state) => state,
   [types.FONTS_ACTIVE]: (state, action) => ({
     ...state,
     active: [...state.active, action.payload],

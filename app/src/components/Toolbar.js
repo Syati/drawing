@@ -2,7 +2,7 @@ import React from 'react';
 import { fabric } from 'fabric';
 
 export default class Toolbar extends React.Component {
-  handleExportClick = (e) => {
+  handleExportClick = () => {
     this.props.onToDataURL();
   };
 
@@ -42,7 +42,7 @@ export default class Toolbar extends React.Component {
     const { url } = this.props;
     return (
       <div id="toolBar">
-        <a className="button" href={url}  download="image.jpg" onClick={this.handleExportClick}>Export</a>
+        <a className="button" href={url} download="image.jpg" onClick={this.handleExportClick}>Export</a>
         <button onClick={this.handleSquareClick}>Squ</button>
         <button onClick={this.handleTextClick}>Text</button>
         <label htmlFor="imageFile" className="button">
@@ -58,3 +58,9 @@ export default class Toolbar extends React.Component {
     );
   }
 }
+
+Toolbar.propTypes = {
+  onToDataURL: React.PropTypes.func,
+  onAddObject: React.PropTypes.func,
+  url: React.PropTypes.string,
+};
