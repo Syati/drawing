@@ -30,14 +30,12 @@ class App extends React.Component {
     return (
       <div>
         <Toolbar />
-        <div className="container">
-          <div className="row">
-            <div ref="canvasWrapper" className={classNames('ten', 'columns')}>
-              <Canvas initialize={fabricCanvasActions.initialize} width={500} height={500} />
-            </div>
-            <div className={classNames('two', 'columns')} >
-              <ObjectDetailSidebar />
-            </div>
+        <div className="row">
+          <div ref="canvasWrapper" className={classNames('ten', 'columns', 'l-canvas')}>
+            <Canvas initialize={fabricCanvasActions.initialize} width={800} height={800} />
+          </div>
+          <div className={classNames('two', 'columns')} >
+            <ObjectDetailSidebar />
           </div>
         </div>
       </div>
