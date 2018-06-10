@@ -8,10 +8,7 @@ export const initialize = (el, height, width) => (dispatch, getState) => {
 export const refresh = ({ type: types.CANVAS_REFRESH });
 export const modified = event => ({ type: types.OBJECT_MODIFIED, payload: event.target });
 export const addObject = obj => (dispatch, getState) => {
-  const fabricCanvas = getState().fabricCanvas;
-  fabricCanvas.add(obj);
-  fabricCanvas.setActiveObject(obj);
-  dispatch({ type: types.ADD_OBJECT, payload: fabricCanvas });
+  dispatch({ type: types.ADD_OBJECT, payload: obj });
   dispatch({ type: types.OBJECT_SELECTED, payload: obj });
 };
 

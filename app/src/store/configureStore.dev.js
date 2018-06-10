@@ -1,10 +1,15 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import fabricMiddleware from '../middleware/fabricMiddleware';
 import rootReducer from '../reducers';
 import DevTools from '../containers/Root/DevTools';
 
+
 const enhancer = compose(
-  applyMiddleware(thunk),
+  applyMiddleware(
+      fabricMiddleware,
+      thunk
+  ),
   DevTools.instrument()
 );
 
